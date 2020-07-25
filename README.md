@@ -31,9 +31,9 @@ For using it in editors -<br>
 4.As an example execute MainTest.java in main package.<br>
 
 ## EXAMPLE
-To execute it download the <b>CellBiClust.jar</b> file , <b>sample.txt</b> and type the following command --<br>
+To execute it download the <b>CellBiClust.jar</b> file , <b>sample.csv</b> and type the following command --<br>
 ```  
-CellBiClust.jar "sample.txt" "," "output.txt"  0.2 2 2
+CellBiClust.jar "sample.csv" "," "output.txt"  0.2 2 2
 ```
 ## ORIGINAL PAPER
 * **Author** - *Initial work* - [Link](link)
