@@ -35,5 +35,7 @@ To execute it download the <b>CellBiClust.jar</b> file , <b>sample.csv</b> and t
 ```  
 CellBiClust.jar "sample.csv" "," "output.txt"  0.2 2 2
 ```
+
+<b>Note</b> : You can use src/dataGenerator.m to generate a binary matrix of dimenation m * n with k 1's . However it won't assign any column or row names. In order to execute the generated file using CellBiClust.jar , one has to add those row names and column names externally. 
 ## ORIGINAL PAPER
 * **Author** - *Initial work* - [Link](link)
