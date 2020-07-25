@@ -1,4 +1,5 @@
 package algorithm;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -116,6 +117,56 @@ public class CellBiClust
 	public CellBiClust(DataFrame TDB,double minsup,long minrows,long mincols)
 	{
 		this(TDB,(long)Math.ceil(minsup*TDB.getRCount()),minrows,mincols);
+	}
+	
+	/**
+	 * Constructor
+	 * @param TDB the DataFrame of the TDB
+	 * @param minsup the minsup value as an integer
+	 * @param minrows the minimum number of rows in the bicluster
+	 * @param mincols the minimum number of columns in the bicluster
+	 * @throws IOException 
+	 * */
+	public CellBiClust(String path,String delim,double minsup,long minrows,long mincols) throws IOException
+	{
+		DataFrame TDB=new CSVReader().getDataFrame(path,delim);;
+		this.inputData=TDB;
+		this.minsup=(long)Math.ceil(minsup*TDB.getRCount());
+		this.inputData=TDB;
+		this.TDB=new ArrayList<List<Long>>();
+		this.TDB.addAll(TDB.convertToTr());
+		this.CLAMap=new TreeMap<Long,TreeCell>();
+		this.mincols=mincols;
+		this.minrows=minrows;
+		this.m=new MemoryTracker();
+	}
+	
+	/**
+	 * Constructor
+	 * @param TDB the DataFrame of the TDB
+	 * @param minsup the minsup value as an integer
+	 * @param minrows the minimum number of rows in the bicluster
+	 * @param mincols the minimum number of columns in the bicluster
+	 * @throws IOException 
+	 * */
+	public CellBiClust(String path,String delim,long minsup,long minrows,long mincols) throws IOException
+	{
+		DataFrame TDB=new CSVReader().getDataFrame(path,delim);;
+		this.inputData=TDB;
+		this.TDB=new ArrayList<List<Long>>();
+		this.TDB.addAll(TDB.convertToTr());
+		this.minsup=minsup;
+		this.CLAMap=new TreeMap<Long,TreeCell>();
+		this.mincols=mincols;
+		this.minrows=minrows;
+		this.m=new MemoryTracker();
+	}
+	/**
+	 * Method to return the input data object
+	 */
+	public DataFrame getInputData()
+	{
+		return this.inputData;
 	}
 	
 	/**
