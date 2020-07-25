@@ -1,13 +1,12 @@
 package main;
 import algorithm.CellBiClust;
 
-public class MainCellBiClust
+public class MainTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		CellBiClust ob=new CellBiClust(args[0],args[1],Double.parseDouble(args[3]),
-				Long.parseLong(args[4]),Long.parseLong(args[5]));
-		ob.runAlgorithm(args[2]);
+		CellBiClust ob=new CellBiClust("src/sample.csv",",",2,2,2);
+		ob.runAlgorithm("src/output.txt");
 		
 		
 //		if(args[5].toLowerCase().equals("true"))

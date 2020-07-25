@@ -1,4 +1,5 @@
 package algorithm;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -121,15 +122,16 @@ public class CellBiClust
 	
 	/**
 	 * Constructor
-	 * @param TDB the DataFrame of the TDB
+	 * @param input the path to an input file containing a presence absence database.
+	 * @param delim the delimiter between each item in the input file.For example it will be "," for csv files
 	 * @param minsup the minsup value as an integer
 	 * @param minrows the minimum number of rows in the bicluster
 	 * @param mincols the minimum number of columns in the bicluster
 	 * @throws IOException 
 	 * */
-	public CellBiClust(String path,String delim,double minsup,long minrows,long mincols) throws IOException
+	public CellBiClust(String input,String delim,double minsup,long minrows,long mincols) throws IOException
 	{
-		DataFrame TDB=new CSVReader().getDataFrame(path,delim);;
+		DataFrame TDB=new CSVReader().getDataFrame(input,delim);;
 		this.inputData=TDB;
 		this.minsup=(long)Math.ceil(minsup*TDB.getRCount());
 		this.inputData=TDB;
@@ -143,15 +145,17 @@ public class CellBiClust
 	
 	/**
 	 * Constructor
-	 * @param TDB the DataFrame of the TDB
+	 * @param input the path to an input file containing a presence absence database.
+	 * @param delim the delimiter between each item in the input file.For example it will be "," for csv files
+	 * @param output the output file path for saving the result (if null, the result will also be printed).
 	 * @param minsup the minsup value as an integer
 	 * @param minrows the minimum number of rows in the bicluster
 	 * @param mincols the minimum number of columns in the bicluster
 	 * @throws IOException 
 	 * */
-	public CellBiClust(String path,String delim,long minsup,long minrows,long mincols) throws IOException
+	public CellBiClust(String input,String delim,long minsup,long minrows,long mincols) throws IOException
 	{
-		DataFrame TDB=new CSVReader().getDataFrame(path,delim);;
+		DataFrame TDB=new CSVReader().getDataFrame(input,delim);;
 		this.inputData=TDB;
 		this.TDB=new ArrayList<List<Long>>();
 		this.TDB.addAll(TDB.convertToTr());
@@ -161,6 +165,7 @@ public class CellBiClust
 		this.minrows=minrows;
 		this.m=new MemoryTracker();
 	}
+	
 	/**
 	 * Method to return the input data object
 	 */
@@ -279,7 +284,7 @@ public class CellBiClust
 	 * Method to generate the bclusters by executing CellBiClust algorithm
 	 * @return a set containing all the biclusters
 	 * */
-	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm() throws InterruptedException
+	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath) throws InterruptedException
 	{
 		long start=System.currentTimeMillis();
 		find_freq_item();
@@ -331,6 +336,33 @@ public class CellBiClust
 		}
 		long end=System.currentTimeMillis();
 		
+		this.outputTemp=output;
+		String details="==================Summary==================\n"
+		+"Number of Biclusters Generated : " + output.size()
+		+"\nNumber of transactions : " + TDB.size()
+		+"\nMinsup value : "+minsup
+		+"\nMax memory : "+ m.getMaxMemory() +" MB\n"
+		+"Time taken : "+ (end-start) +" ms\n"+"===========================================";
+		if(outPath==null)
+		{
+			System.out.println("Following are the Biclusters ---");
+			System.out.println(details);
+			System.out.println(getBiClustersAsString());
+		}
+		else
+		{
+			
+			try {
+				FileWriter outFile = new FileWriter(outPath);
+				outFile.write(details);
+				outFile.write(getBiClustersAsString());
+				outFile.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
 		System.out.println("==================Summary==================");
 		System.out.println("Number of Biclusters Generated : " + output.size());
@@ -340,7 +372,6 @@ public class CellBiClust
 		System.out.println("Time taken : "+ (end-start) +" ms");
 		System.out.println("===========================================");
 		
-		this.outputTemp=output;
 		return output;
 	}
 
