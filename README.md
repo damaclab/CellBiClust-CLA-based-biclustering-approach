@@ -33,7 +33,7 @@ For using it in editors -<br>
 ## EXAMPLE
 To execute it download the <b>CellBiClust.jar</b> file , <b>sample.txt</b> and type the following command --<br>
 ```  
-CellBiClust.jar "sample.txt" "," "output.txt"  0.5 2 2
+CellBiClust.jar "sample.txt" "," "output.txt"  0.2 2 2
 ```
 ## ORIGINAL PAPER
 * **Author** - *Initial work* - [Link](link)
