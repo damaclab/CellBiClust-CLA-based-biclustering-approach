@@ -12,7 +12,7 @@ public class MainCellBiClust
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+//			e.printStackTrace();
 			System.out.println("Please check your options");
 		}
 		
