@@ -12,16 +12,16 @@ First <b>download</b> the <b>CellBiClust.jar</b> file.
 
 Execution command --
 ```
-CellBiClust.jar "input file path" "delimiter" "output file path" "minsup value as a fraction" "minrows" "mincols" "rule_gen" "rule threshold"
+CellBiClust.jar "input file path" "delimiter" "bicluster output file path" "minrows" "mincols" "rule output file path" "rule_gen" "rule threshold"
 ```
 <br>
 Each of these parameters represent -- <br>
 <b>"input file path"</b>            : the path to an input file containing a transaction database.<br>
 <b>"delimiter"</b>                  : the delimiter between each item in the input file.For example it will be "," for csv files<br>
-<b>"output file path"</b>           : the output file path for saving the result (if null, the result will also be printed).<br>
-<b>"minsup value as a fraction"</b> : the minimum support threshold.<br>
+<b>"bicluster output file path"</b>           : the output file path for saving the biclusters obtained (if null, the biclusters will be printed).<br>
 <b>"minrows"</b> : the minimum number of rows in the bicluster.<br>
 <b>"mincols"</b> : the minimum number of columns in the bicluster.<br>
+<b>"rule output file path"</b>           : the output file path for saving the rules obtained (if null, the rules will be printed).<br>
 <b>"rule_gen"</b> : the value should be "true" or "false" if the user wants to generate rules or not<br>
 <b>"rule threshold"</b> : the minimum confidence for each rule to be generated<br>
  <br>
@@ -35,7 +35,7 @@ For using it in editors -<br>
 ## EXAMPLE
 To execute it download the <b>CellBiClust.jar</b> file , <b>sample.csv</b> and type the following command --<br>
 ```  
-CellBiClust.jar "sample.csv" "," "output.txt"  0.2 2 2 "true" 0.7
+CellBiClust.jar "sample.csv" "," "bicluster.txt" 2 2 "rule.txt" "true" 0.7
 ```
 
 <b>Note</b> : You can use src/dataGenerator.m to generate a binary matrix of dimenation m * n with k 1's . However it won't assign any column or row names. In order to execute the generated file using CellBiClust.jar , one has to add those row names and column names externally. 
