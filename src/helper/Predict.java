@@ -74,6 +74,7 @@ public class Predict
 	public void getRules(String outPath) throws IOException
 	{
 		FileWriter outFile;
+		String predict="";
 		if(outPath==null)
 			outFile=null;
 		else
@@ -119,13 +120,18 @@ public class Predict
 						stemp+=this.data.getRName((int)(long)ii-1)+" ";
 					stemp+="]";
 					if(outFile==null)
-						System.out.println("Prediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]\n");
+						System.out.println("Prediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]");
 					else
-						outFile.append("\nPrediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]\n");
+//						outFile.append("\nPrediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]\n");
+						predict+="\nPrediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]";
 				}
 			}
 		}
 		if(outFile!=null)
+		{
+			outFile.append("\n===========Predictions==========");
+			outFile.append(predict);
 			outFile.close();
+		}
 	}
 }

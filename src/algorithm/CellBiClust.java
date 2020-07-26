@@ -41,7 +41,6 @@ public class CellBiClust
 	MemoryTracker m;//To keep track of the maximum memory used
 	DataFrame inputData;//To store the input data
 	List<List<Long>> TDB;// To store input Transactional Database
-	long minsup;//The minsup values
 	long mincols;//The minimum number of rows in the cluster
 	long minrows;//The minimum number of columns in the cluster
 	Map<Long,Long> FImap;//To store the count of each frequent item
@@ -97,44 +96,8 @@ public class CellBiClust
 	 * @param minrows the minimum number of rows in the bicluster
 	 * @param mincols the minimum number of columns in the bicluster
 	 * */
-	public CellBiClust(DataFrame TDB,long minsup,long minrows,long mincols)
+	public CellBiClust(DataFrame TDB,long minrows,long mincols)
 	{
-		this.inputData=TDB;
-		this.TDB=new ArrayList<List<Long>>();
-		this.TDB.addAll(TDB.convertToTr());
-		this.minsup=minsup;
-		this.CLAMap=new TreeMap<Long,TreeCell>();
-		this.mincols=mincols;
-		this.minrows=minrows;
-		this.m=new MemoryTracker();
-	}
-	
-	/**
-	 * Constructor
-	 * @param TDB the DataFrame of the TDB
-	 * @param minsup the minsup value as a fraction in the range [0,1)
-	 * @param minrows the minimum number of rows in the bicluster
-	 * @param mincols the minimum number of columns in the bicluster
-	 * */
-	public CellBiClust(DataFrame TDB,double minsup,long minrows,long mincols)
-	{
-		this(TDB,(long)Math.ceil(minsup*TDB.getRCount()),minrows,mincols);
-	}
-	
-	/**
-	 * Constructor
-	 * @param input the path to an input file containing a presence absence database.
-	 * @param delim the delimiter between each item in the input file.For example it will be "," for csv files
-	 * @param minsup the minsup value as an integer
-	 * @param minrows the minimum number of rows in the bicluster
-	 * @param mincols the minimum number of columns in the bicluster
-	 * @throws IOException 
-	 * */
-	public CellBiClust(String input,String delim,double minsup,long minrows,long mincols) throws IOException
-	{
-		DataFrame TDB=new CSVReader().getDataFrame(input,delim);;
-		this.inputData=TDB;
-		this.minsup=(long)Math.ceil(minsup*TDB.getRCount());
 		this.inputData=TDB;
 		this.TDB=new ArrayList<List<Long>>();
 		this.TDB.addAll(TDB.convertToTr());
@@ -148,19 +111,18 @@ public class CellBiClust
 	 * Constructor
 	 * @param input the path to an input file containing a presence absence database.
 	 * @param delim the delimiter between each item in the input file.For example it will be "," for csv files
-	 * @param output the output file path for saving the result (if null, the result will also be printed).
 	 * @param minsup the minsup value as an integer
 	 * @param minrows the minimum number of rows in the bicluster
 	 * @param mincols the minimum number of columns in the bicluster
 	 * @throws IOException 
 	 * */
-	public CellBiClust(String input,String delim,long minsup,long minrows,long mincols) throws IOException
+	public CellBiClust(String input,String delim,long minrows,long mincols) throws IOException
 	{
 		DataFrame TDB=new CSVReader().getDataFrame(input,delim);;
 		this.inputData=TDB;
+		this.inputData=TDB;
 		this.TDB=new ArrayList<List<Long>>();
 		this.TDB.addAll(TDB.convertToTr());
-		this.minsup=minsup;
 		this.CLAMap=new TreeMap<Long,TreeCell>();
 		this.mincols=mincols;
 		this.minrows=minrows;
@@ -192,7 +154,7 @@ public class CellBiClust
 			}
 		for(Long i:FImap.keySet())
 		{
-			if(FImap.get(i)>=minsup)
+			if(FImap.get(i)>=this.minrows)
 				this.FImap.put(i, FImap.get(i));
 		}
 	}
@@ -285,7 +247,7 @@ public class CellBiClust
 	 * Method to generate the bclusters by executing CellBiClust algorithm
 	 * @return a set containing all the biclusters
 	 * */
-	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String rule,double ruleth) throws InterruptedException
+	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String rule,double ruleth,String ruleOut) throws InterruptedException
 	{
 		long start=System.currentTimeMillis();
 		find_freq_item();
@@ -341,7 +303,6 @@ public class CellBiClust
 		String details="==================Summary==================\n"
 		+"Number of Biclusters Generated : " + output.size()
 		+"\nNumber of transactions : " + TDB.size()
-		+"\nMinsup value : "+minsup
 		+"\nMax memory : "+ m.getMaxMemory() +" MB\n"
 		+"Time taken : "+ (end-start) +" ms\n"+"===========================================";
 		if(outPath==null)
@@ -368,13 +329,12 @@ public class CellBiClust
 		System.out.println("==================Summary==================");
 		System.out.println("Number of Biclusters Generated : " + output.size());
 		System.out.println("Number of transactions : " + TDB.size());
-		System.out.println("Minsup value : "+minsup);
 		System.out.println("Max memory : "+ m.getMaxMemory() +" MB");
 		System.out.println("Time taken : "+ (end-start) +" ms");
 		System.out.println("===========================================");
 		if(rule.equals("true"))
 			try {
-				new Predict(this.inputData,output,ruleth).getRules(outPath);
+				new Predict(this.inputData,output,ruleth).getRules(ruleOut);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
