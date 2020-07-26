@@ -19,6 +19,7 @@ import com.google.common.collect.Sets;
 import helper.CSVReader;
 import helper.DataFrame;
 import helper.MemoryTracker;
+import helper.Predict;
 import helper.ThreadChannel;
 /** 
  * This is an implementation of the CellBiClust algorithm.
@@ -284,7 +285,7 @@ public class CellBiClust
 	 * Method to generate the bclusters by executing CellBiClust algorithm
 	 * @return a set containing all the biclusters
 	 * */
-	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath) throws InterruptedException
+	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String rule,double ruleth) throws InterruptedException
 	{
 		long start=System.currentTimeMillis();
 		find_freq_item();
@@ -371,6 +372,13 @@ public class CellBiClust
 		System.out.println("Max memory : "+ m.getMaxMemory() +" MB");
 		System.out.println("Time taken : "+ (end-start) +" ms");
 		System.out.println("===========================================");
+		if(rule.equals("true"))
+			try {
+				new Predict(this.inputData,output,ruleth).getRules(outPath);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		return output;
 	}

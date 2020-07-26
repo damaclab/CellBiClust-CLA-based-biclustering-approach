@@ -1,5 +1,7 @@
 package helper;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -67,9 +69,18 @@ public class Predict
 	
 	/**
 	 * Methods to geenrate the rules from the given output set.
+	 * @throws IOException 
 	 * */
-	public void getRules()
+	public void getRules(String outPath) throws IOException
 	{
+		FileWriter outFile;
+		if(outPath==null)
+			outFile=null;
+		else
+		{
+			outFile = new FileWriter(outPath,true);
+			outFile.append("\n===========Rules==========");
+		}
 		Map<Set<Long>,Long> count=new TreeMap<Set<Long>,Long>(this.SetLongComparator);
 		for(Entry<Set<Long>, Set<Long>> i:map)
 		{
@@ -99,14 +110,22 @@ public class Predict
 					for(Long ii:tempi)
 						stemp+=this.data.getCName((int)(long)ii-1)+" ";
 					stemp+="]";
-					System.out.println(stemp+"->"+this.data.getCName((int)(long)item-1)+" Conf : "+conf);
+					if(outFile==null)
+						System.out.println(stemp+"->"+this.data.getCName((int)(long)item-1)+" Conf : "+conf);
+					else
+						outFile.append("\n"+stemp+"->"+this.data.getCName((int)(long)item-1)+" Conf : "+conf);
 					stemp="[";
 					for(Long ii:Sets.difference(tids,i.getValue()))
 						stemp+=this.data.getRName((int)(long)ii-1)+" ";
 					stemp+="]";
-					System.out.println("Prediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]\n");
+					if(outFile==null)
+						System.out.println("Prediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]\n");
+					else
+						outFile.append("\nPrediction : "+stemp+"<->["+this.data.getCName((int)(long)item-1)+"]\n");
 				}
 			}
 		}
+		if(outFile!=null)
+			outFile.close();
 	}
 }
