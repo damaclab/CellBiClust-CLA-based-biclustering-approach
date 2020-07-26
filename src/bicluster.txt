@@ -1,9 +1,8 @@
 ==================Summary==================
 Number of Biclusters Generated : 36
 Number of transactions : 10
-Minsup value : 2
-Max memory : 2.2819976806640625 MB
-Time taken : 115 ms
+Max memory : 2.281982421875 MB
+Time taken : 47 ms
 ===========================================
 Bicluster 1
 Number of Items : 2
@@ -293,58 +292,3 @@ Item_indexes :	2	3
 Transaction names : 	C5	C6	C8	C9	C10
 Transaction indexes : 	4	5	7	8	9
 
-
-===========Rules==========
-[R1 ]->R10 Conf : 0.75
-Prediction : [C9 ]<->[R10]
-
-[R6 ]->R10 Conf : 0.8
-Prediction : [C4 ]<->[R10]
-
-[R2 R7 ]->R1 Conf : 0.75
-Prediction : [C8 ]<->[R1]
-
-[R1 ]->R3 Conf : 0.75
-Prediction : [C2 ]<->[R3]
-
-[R3 R7 ]->R4 Conf : 0.75
-Prediction : [C1 ]<->[R4]
-
-[R7 ]->R3 Conf : 0.8
-Prediction : [C2 ]<->[R3]
-
-[R2 R10 ]->R7 Conf : 0.75
-Prediction : [C3 ]<->[R7]
-
-[R2 R7 ]->R10 Conf : 0.75
-Prediction : [C9 ]<->[R10]
-
-[R6 ]->R2 Conf : 0.8
-Prediction : [C6 ]<->[R2]
-
-[R9 ]->R3 Conf : 0.75
-Prediction : [C3 ]<->[R3]
-
-[R7 ]->R2 Conf : 0.8
-Prediction : [C10 ]<->[R2]
-
-[R2 ]->R3 Conf : 0.7142857142857143
-Prediction : [C2 C3 ]<->[R3]
-
-[R3 R7 ]->R2 Conf : 0.75
-Prediction : [C10 ]<->[R2]
-
-[R2 R7 ]->R3 Conf : 0.75
-Prediction : [C2 ]<->[R3]
-
-[R2 R6 ]->R9 Conf : 0.75
-Prediction : [C2 ]<->[R9]
-
-[R6 R10 ]->R2 Conf : 0.75
-Prediction : [C6 ]<->[R2]
-
-[R2 R10 ]->R6 Conf : 0.75
-Prediction : [C1 ]<->[R6]
-
-[R2 R6 ]->R10 Conf : 0.75
-Prediction : [C4 ]<->[R10]

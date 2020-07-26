@@ -79,7 +79,7 @@ public class Predict
 			outFile=null;
 		else
 		{
-			outFile = new FileWriter(outPath,true);
+			outFile = new FileWriter(outPath);
 			outFile.append("\n===========Rules==========");
 		}
 		Map<Set<Long>,Long> count=new TreeMap<Set<Long>,Long>(this.SetLongComparator);
