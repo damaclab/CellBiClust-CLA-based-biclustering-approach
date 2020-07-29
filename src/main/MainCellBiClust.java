@@ -7,12 +7,17 @@ public class MainCellBiClust
 	{
 		try {
 			CellBiClust ob=new CellBiClust(args[0],args[1],
-				Long.parseLong(args[3]),Long.parseLong(args[4]));
-				ob.runAlgorithm(args[2],args[6].toLowerCase(),Double.parseDouble(args[7]),args[5]);
+				Long.parseLong(args[4]),Long.parseLong(args[5]));
+				
+				if(args[6]==null || !args[6].toLowerCase().equals("true"))
+					ob.runAlgorithm(args[2],args[3],"false",1.0);
+				else
+					ob.runAlgorithm(args[2],args[3],args[6].toLowerCase(),
+						Double.parseDouble(args[7]));
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+//			e.printStackTrace();
 			System.out.println("Please check your options");
 		}
 		

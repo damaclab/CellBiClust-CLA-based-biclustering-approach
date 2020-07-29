@@ -6,11 +6,7 @@ public class MainTest
 	public static void main(String[] args) throws Exception
 	{
 		CellBiClust ob=new CellBiClust("src/sample.csv",",",2,2);
-		ob.runAlgorithm("src/output.txt","true",0.7,"src/rule.txt");
-		
-		
-//		if(args[5].toLowerCase().equals("true"))
-//			new Predict(ob.getInputData(),output,Double.parseDouble(args[6])).getRules();
+		ob.runAlgorithm("src","sample_output","true",0.7);
 	}
 
 }	

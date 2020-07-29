@@ -92,7 +92,6 @@ public class CellBiClust
 	/**
 	 * Constructor
 	 * @param TDB the DataFrame of the TDB
-	 * @param minsup the minsup value as an integer
 	 * @param minrows the minimum number of rows in the bicluster
 	 * @param mincols the minimum number of columns in the bicluster
 	 * */
@@ -111,7 +110,6 @@ public class CellBiClust
 	 * Constructor
 	 * @param input the path to an input file containing a presence absence database.
 	 * @param delim the delimiter between each item in the input file.For example it will be "," for csv files
-	 * @param minsup the minsup value as an integer
 	 * @param minrows the minimum number of rows in the bicluster
 	 * @param mincols the minimum number of columns in the bicluster
 	 * @throws IOException 
@@ -244,10 +242,15 @@ public class CellBiClust
 	}
 	
 	/**
-	 * Method to generate the bclusters by executing CellBiClust algorithm
+	 * Method to generate the bclusters by executing CellBiClust algorithm<br>
+	 * <i>Warning</i>(for developers) : the returned object is mutable and modifying it will lead to undesired output
+	 * @param outPath the output file path for saving the biclusters obtained (if null, the biclusters will be printed)
+	 * @param fname the filename only. Example "output". File extensions will be added automatically
+	 * @param rule set to "true" if you want to generate rules else set to "false"
+	 * @param ruleth the minimum condfidence for the rule
 	 * @return a set containing all the biclusters
 	 * */
-	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String rule,double ruleth,String ruleOut) throws InterruptedException
+	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String fname,String rule,double ruleth) throws InterruptedException
 	{
 		long start=System.currentTimeMillis();
 		find_freq_item();
@@ -315,7 +318,7 @@ public class CellBiClust
 		{
 			
 			try {
-				FileWriter outFile = new FileWriter(outPath);
+				FileWriter outFile = new FileWriter(outPath+"/"+fname+"_biclusters.txt");
 				outFile.write(details);
 				outFile.write(getBiClustersAsString());
 				outFile.close();
@@ -334,12 +337,12 @@ public class CellBiClust
 		System.out.println("===========================================");
 		if(rule.equals("true"))
 			try {
-				new Predict(this.inputData,output,ruleth).getRules(ruleOut);
+				
+				new Predict(this.inputData,output,ruleth).getRules(outPath,fname);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
 		return output;
 	}
 

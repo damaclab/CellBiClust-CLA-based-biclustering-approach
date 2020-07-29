@@ -1,8 +1,8 @@
 ==================Summary==================
 Number of Biclusters Generated : 36
 Number of transactions : 10
-Max memory : 2.281982421875 MB
-Time taken : 47 ms
+Max memory : 1.5625991821289062 MB
+Time taken : 68 ms
 ===========================================
 Bicluster 1
 Number of Items : 2
