@@ -33,7 +33,7 @@ For using it in editors -<br>
 3.Build it using maven with goals clean and install<br>
 4.As an example execute MainTest.java in main package.<br>
 
-Output Files--
+###Output Files
 The algorithm will generate three files one each for : biclusters, rules and predictions.<br>
 Let the filename be "sample_output".<br>
 The file containing biclusters will be named as "sample_output_biclusters.txt".<br>
