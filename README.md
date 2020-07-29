@@ -43,8 +43,9 @@ The file containing predictions will be named as "sample_output_prediction.txt".
 ## EXAMPLE
 To execute it download the <b>CellBiClust.jar</b> file , <b>sample.csv</b> and type the following command --<br>
 ```  
-CellBiClust.jar "src/sample.csv" "," "src" "sample_out" 2 2 "true" 0.7
+CellBiClust.jar "sample.csv" "," "src" "sample_out" 2 2 "true" 0.7
 ```
+The sample outputs are available in src folder<br>
 
 <b>Note</b> : You can use src/dataGenerator.m to generate a binary matrix of dimenation m * n with k 1's . However it won't assign any column or row names. In order to execute the generated file using CellBiClust.jar , one has to add those row names and column names externally. 
 ## ORIGINAL PAPER
