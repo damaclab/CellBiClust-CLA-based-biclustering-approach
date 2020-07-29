@@ -27,7 +27,8 @@ CellBiClust.jar "input file path" "delimiter" "output file path" "output filenam
 <b>"rule threshold"</b> : the minimum confidence for each rule to be generated<br>
  <br>
 
-For using it in editors -<br>
+
+##### For using it in editors 
 1.Clone this repository <br>
 2.Open it in your desired editor<br>
 3.Build it using maven with goals clean and install<br>
