@@ -14,7 +14,7 @@ Execution command --
 ```
 CellBiClust.jar "input file path" "delimiter" "output file path" "output filename" minrows" "mincols" "rule_gen" "rule threshold"
 ```
-<br>
+
 ##### Command Line Arguments 
 <b>"input file path"</b>            : the path to an input file containing a transaction database.<br>
 <b>"delimiter"</b>                  : the delimiter between each item in the input file.For example it will be "," for csv files<br>
