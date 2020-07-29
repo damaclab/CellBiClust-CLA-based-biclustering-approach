@@ -15,7 +15,7 @@ Execution command --
 CellBiClust.jar "input file path" "delimiter" "output file path" "output filename" minrows" "mincols" "rule_gen" "rule threshold"
 ```
 <br>
-Each of these parameters represent -- <br>
+##### Command Line Arguments
 <b>"input file path"</b>            : the path to an input file containing a transaction database.<br>
 <b>"delimiter"</b>                  : the delimiter between each item in the input file.For example it will be "," for csv files<br>
 <b>"output file path"</b>           : the output file path for saving the biclusters obtained (if null, the biclusters will be printed).<br>
@@ -33,7 +33,7 @@ For using it in editors -<br>
 3.Build it using maven with goals clean and install<br>
 4.As an example execute MainTest.java in main package.<br>
 
-###Output Files
+##### Output Files
 The algorithm will generate three files one each for : biclusters, rules and predictions.<br>
 Let the filename be "sample_output".<br>
 The file containing biclusters will be named as "sample_output_biclusters.txt".<br>
