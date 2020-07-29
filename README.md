@@ -29,11 +29,12 @@ CellBiClust.jar "input file path" "delimiter" "output file path" "output filenam
 
 
 ##### For using it in editors 
-1.Clone this repository <br>
-2.Open it in your desired editor<br>
-3.Build it using maven with goals clean and install<br>
-4.As an example execute MainTest.java in main package.<br>
-
+<ol>
+<li>Clone this repository </li>
+<li>Open it in your desired editor</li>
+<li>Build it using maven with goals clean and install</li>
+<li>As an example execute MainTest.java in main package.</li>
+</ol>
 ##### Output Files
 The algorithm will generate three files one each for : biclusters, rules and predictions.<br>
 Let the filename be "sample_output".<br>
