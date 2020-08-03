@@ -22,7 +22,6 @@ CellBiClust.jar "input file path" "delimiter" "output file path" "output filenam
 <b>"output filename"</b> : the filename only. Example "output". File extensions will be added automatically<br>
 <b>"minrows"</b> : the minimum number of rows in the bicluster.<br>
 <b>"mincols"</b> : the minimum number of columns in the bicluster.<br>
-<b>"rule output file path"</b>           : the output file path for saving the rules obtained (if null, the rules will be printed).<br>
 <b>"rule_gen"</b> : the value should be "true" or "false" if the user wants to generate rules or not<br>
 <b>"rule threshold"</b> : the minimum confidence for each rule to be generated<br>
  <br>
