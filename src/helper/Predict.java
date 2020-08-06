@@ -262,12 +262,14 @@ public class Predict
 				if(!Sets.difference(itemi.getKey(),itemj.getKey()).isEmpty()
 						&& !Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty())
 				{
+//					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
 					preds.put(Sets.difference(itemi.getKey(),itemj.getKey())
 							,Sets.difference(itemj.getValue(),itemi.getValue()));
 				}
 				if(!Sets.difference(itemj.getKey(),itemi.getKey()).isEmpty()
 						&& !Sets.difference(itemi.getValue(),itemj.getValue()).isEmpty())
 				{
+//					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
 					preds.put(Sets.difference(itemj.getKey(),itemi.getKey())
 							,Sets.difference(itemi.getValue(),itemj.getValue()));
 				}
@@ -277,7 +279,7 @@ public class Predict
 		if(outPath==null)
 		{
 			System.out.print("====Predictions====\nItems,Predicted Transactions\n");
-			for(Entry<Set<Long>, Set<Long>> i:map)
+			for(Entry<Set<Long>, Set<Long>> i:preds.entrySet())
 			{
 				String stemp="\"[";
 				for(long j:i.getKey())
@@ -294,7 +296,7 @@ public class Predict
 		{
 			outPred = new FileWriter(outPath+"/"+fname+"_prediction_from_bicluster.csv");
 			outPred.append("Items,Predicted Transactions\n");
-			for(Entry<Set<Long>, Set<Long>> i:map)
+			for(Entry<Set<Long>, Set<Long>> i:preds.entrySet())
 			{
 				String stemp="\"[";
 				for(long j:i.getKey())
