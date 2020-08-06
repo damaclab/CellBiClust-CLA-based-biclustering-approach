@@ -1,294 +1,294 @@
 ==================Summary==================
 Number of Biclusters Generated : 36
 Number of transactions : 10
-Max memory : 1.5625991821289062 MB
-Time taken : 68 ms
+Max memory : 1.5625839233398438 MB
+Time taken : 81 ms
 ===========================================
 Bicluster 1
 Number of Items : 2
 Number of Transactions : 3
-Item_names :	R1	R10
+Item_names :	C1	C10
 Item_indexes :	0	9
-Transaction names : 	C1	C2	C6
+Transaction names : 	R1	R2	R6
 Transaction indexes : 	0	1	5
 
 Bicluster 2
 Number of Items : 2
 Number of Transactions : 4
-Item_names :	R2	R10
+Item_names :	C2	C10
 Item_indexes :	1	9
-Transaction names : 	C1	C2	C3	C8
+Transaction names : 	R1	R2	R3	R8
 Transaction indexes : 	0	1	2	7
 
 Bicluster 3
 Number of Items : 2
 Number of Transactions : 4
-Item_names :	R6	R10
+Item_names :	C6	C10
 Item_indexes :	5	9
-Transaction names : 	C2	C3	C6	C8
+Transaction names : 	R2	R3	R6	R8
 Transaction indexes : 	1	2	5	7
 
 Bicluster 4
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R1	R2	R5	R7
+Item_names :	C1	C2	C5	C7
 Item_indexes :	0	1	4	6
-Transaction names : 	C2	C9
+Transaction names : 	R2	R9
 Transaction indexes : 	1	8
 
 Bicluster 5
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R3	R4	R7	R9
+Item_names :	C3	C4	C7	C9
 Item_indexes :	2	3	6	8
-Transaction names : 	C8	C10
+Transaction names : 	R8	R10
 Transaction indexes : 	7	9
 
 Bicluster 6
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R1	R2	R7
+Item_names :	C1	C2	C7
 Item_indexes :	0	1	6
-Transaction names : 	C1	C2	C9
+Transaction names : 	R1	R2	R9
 Transaction indexes : 	0	1	8
 
 Bicluster 7
 Number of Items : 3
 Number of Transactions : 2
-Item_names :	R1	R3	R4
+Item_names :	C1	C3	C4
 Item_indexes :	0	2	3
-Transaction names : 	C6	C9
+Transaction names : 	R6	R9
 Transaction indexes : 	5	8
 
 Bicluster 8
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R1	R2	R3	R7
+Item_names :	C1	C2	C3	C7
 Item_indexes :	0	1	2	6
-Transaction names : 	C1	C9
+Transaction names : 	R1	R9
 Transaction indexes : 	0	8
 
 Bicluster 9
 Number of Items : 3
 Number of Transactions : 2
-Item_names :	R1	R3	R10
+Item_names :	C1	C3	C10
 Item_indexes :	0	2	9
-Transaction names : 	C1	C6
+Transaction names : 	R1	R6
 Transaction indexes : 	0	5
 
 Bicluster 10
 Number of Items : 2
 Number of Transactions : 3
-Item_names :	R2	R5
+Item_names :	C2	C5
 Item_indexes :	1	4
-Transaction names : 	C2	C3	C9
+Transaction names : 	R2	R3	R9
 Transaction indexes : 	1	2	8
 
 Bicluster 11
 Number of Items : 5
 Number of Transactions : 2
-Item_names :	R2	R3	R4	R7	R8
+Item_names :	C2	C3	C4	C7	C8
 Item_indexes :	1	2	3	6	7
-Transaction names : 	C8	C9
+Transaction names : 	R8	R9
 Transaction indexes : 	7	8
 
 Bicluster 12
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R2	R6	R9	R10
+Item_names :	C2	C6	C9	C10
 Item_indexes :	1	5	8	9
-Transaction names : 	C3	C8
+Transaction names : 	R3	R8
 Transaction indexes : 	2	7
 
 Bicluster 13
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R2	R5	R6	R10
+Item_names :	C2	C5	C6	C10
 Item_indexes :	1	4	5	9
-Transaction names : 	C2	C3
+Transaction names : 	R2	R3
 Transaction indexes : 	1	2
 
 Bicluster 14
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R2	R6	R7	R10
+Item_names :	C2	C6	C7	C10
 Item_indexes :	1	5	6	9
-Transaction names : 	C2	C8
+Transaction names : 	R2	R8
 Transaction indexes : 	1	7
 
 Bicluster 15
 Number of Items : 2
 Number of Transactions : 3
-Item_names :	R3	R8
+Item_names :	C3	C8
 Item_indexes :	2	7
-Transaction names : 	C7	C8	C9
+Transaction names : 	R7	R8	R9
 Transaction indexes : 	6	7	8
 
 Bicluster 16
 Number of Items : 2
 Number of Transactions : 3
-Item_names :	R1	R3
+Item_names :	C1	C3
 Item_indexes :	0	2
-Transaction names : 	C1	C6	C9
+Transaction names : 	R1	R6	R9
 Transaction indexes : 	0	5	8
 
 Bicluster 17
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R3	R4	R7
+Item_names :	C3	C4	C7
 Item_indexes :	2	3	6
-Transaction names : 	C8	C9	C10
+Transaction names : 	R8	R9	R10
 Transaction indexes : 	7	8	9
 
 Bicluster 18
 Number of Items : 2
 Number of Transactions : 4
-Item_names :	R3	R7
+Item_names :	C3	C7
 Item_indexes :	2	6
-Transaction names : 	C1	C8	C9	C10
+Transaction names : 	R1	R8	R9	R10
 Transaction indexes : 	0	7	8	9
 
 Bicluster 19
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R1	R2	R7	R10
+Item_names :	C1	C2	C7	C10
 Item_indexes :	0	1	6	9
-Transaction names : 	C1	C2
+Transaction names : 	R1	R2
 Transaction indexes : 	0	1
 
 Bicluster 20
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R2	R7	R10
+Item_names :	C2	C7	C10
 Item_indexes :	1	6	9
-Transaction names : 	C1	C2	C8
+Transaction names : 	R1	R2	R8
 Transaction indexes : 	0	1	7
 
 Bicluster 21
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R2	R3	R6	R9
+Item_names :	C2	C3	C6	C9
 Item_indexes :	1	2	5	8
-Transaction names : 	C4	C8
+Transaction names : 	R4	R8
 Transaction indexes : 	3	7
 
 Bicluster 22
 Number of Items : 3
 Number of Transactions : 2
-Item_names :	R1	R6	R10
+Item_names :	C1	C6	C10
 Item_indexes :	0	5	9
-Transaction names : 	C2	C6
+Transaction names : 	R2	R6
 Transaction indexes : 	1	5
 
 Bicluster 23
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R3	R4	R6	R10
+Item_names :	C3	C4	C6	C10
 Item_indexes :	2	3	5	9
-Transaction names : 	C6	C8
+Transaction names : 	R6	R8
 Transaction indexes : 	5	7
 
 Bicluster 24
 Number of Items : 2
 Number of Transactions : 4
-Item_names :	R2	R6
+Item_names :	C2	C6
 Item_indexes :	1	5
-Transaction names : 	C2	C3	C4	C8
+Transaction names : 	R2	R3	R4	R8
 Transaction indexes : 	1	2	3	7
 
 Bicluster 25
 Number of Items : 3
 Number of Transactions : 2
-Item_names :	R3	R8	R10
+Item_names :	C3	C8	C10
 Item_indexes :	2	7	9
-Transaction names : 	C7	C8
+Transaction names : 	R7	R8
 Transaction indexes : 	6	7
 
 Bicluster 26
 Number of Items : 2
 Number of Transactions : 3
-Item_names :	R3	R9
+Item_names :	C3	C9
 Item_indexes :	2	8
-Transaction names : 	C4	C8	C10
+Transaction names : 	R4	R8	R10
 Transaction indexes : 	3	7	9
 
 Bicluster 27
 Number of Items : 2
 Number of Transactions : 3
-Item_names :	R3	R6
+Item_names :	C3	C6
 Item_indexes :	2	5
-Transaction names : 	C4	C6	C8
+Transaction names : 	R4	R6	R8
 Transaction indexes : 	3	5	7
 
 Bicluster 28
 Number of Items : 2
 Number of Transactions : 4
-Item_names :	R3	R10
+Item_names :	C3	C10
 Item_indexes :	2	9
-Transaction names : 	C1	C6	C7	C8
+Transaction names : 	R1	R6	R7	R8
 Transaction indexes : 	0	5	6	7
 
 Bicluster 29
 Number of Items : 2
 Number of Transactions : 4
-Item_names :	R2	R7
+Item_names :	C2	C7
 Item_indexes :	1	6
-Transaction names : 	C1	C2	C8	C9
+Transaction names : 	R1	R2	R8	R9
 Transaction indexes : 	0	1	7	8
 
 Bicluster 30
 Number of Items : 2
 Number of Transactions : 5
-Item_names :	R2	R3
+Item_names :	C2	C3
 Item_indexes :	1	2
-Transaction names : 	C1	C4	C5	C8	C9
+Transaction names : 	R1	R4	R5	R8	R9
 Transaction indexes : 	0	3	4	7	8
 
 Bicluster 31
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R2	R3	R7
+Item_names :	C2	C3	C7
 Item_indexes :	1	2	6
-Transaction names : 	C1	C8	C9
+Transaction names : 	R1	R8	R9
 Transaction indexes : 	0	7	8
 
 Bicluster 32
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R2	R6	R9
+Item_names :	C2	C6	C9
 Item_indexes :	1	5	8
-Transaction names : 	C3	C4	C8
+Transaction names : 	R3	R4	R8
 Transaction indexes : 	2	3	7
 
 Bicluster 33
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R2	R3	R4
+Item_names :	C2	C3	C4
 Item_indexes :	1	2	3
-Transaction names : 	C5	C8	C9
+Transaction names : 	R5	R8	R9
 Transaction indexes : 	4	7	8
 
 Bicluster 34
 Number of Items : 3
 Number of Transactions : 3
-Item_names :	R2	R6	R10
+Item_names :	C2	C6	C10
 Item_indexes :	1	5	9
-Transaction names : 	C2	C3	C8
+Transaction names : 	R2	R3	R8
 Transaction indexes : 	1	2	7
 
 Bicluster 35
 Number of Items : 4
 Number of Transactions : 2
-Item_names :	R2	R3	R7	R10
+Item_names :	C2	C3	C7	C10
 Item_indexes :	1	2	6	9
-Transaction names : 	C1	C8
+Transaction names : 	R1	R8
 Transaction indexes : 	0	7
 
 Bicluster 36
 Number of Items : 2
 Number of Transactions : 5
-Item_names :	R3	R4
+Item_names :	C3	C4
 Item_indexes :	2	3
-Transaction names : 	C5	C6	C8	C9	C10
+Transaction names : 	R5	R6	R8	R9	R10
 Transaction indexes : 	4	5	7	8	9
 

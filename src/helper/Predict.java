@@ -3,6 +3,7 @@ package helper;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -241,4 +242,74 @@ public class Predict
 			outPred.close();
 		}
 	}
+	
+	/**
+	 * Methods to generate the rules from the given output set.
+	 * @param outPath the path for the output file
+	 * @param fname the file name
+	 * @throws IOException 
+	 * */
+	public void getRulesFromBicluster(String outPath,String fname) throws IOException
+	{
+		List<Entry<Set<Long>, Set<Long>>> map=this.map.stream().collect(Collectors.toList());
+		Map<Set<Long>,Set<Long>> preds=new HashMap<Set<Long>,Set<Long>>();
+		for(int i=0;i<map.size();i++)
+		{
+			Entry<Set<Long>, Set<Long>> itemi=map.get(i);
+			for(int j=i+1;j<map.size();j++)
+			{
+				Entry<Set<Long>, Set<Long>> itemj=map.get(j);
+				if(!Sets.difference(itemi.getKey(),itemj.getKey()).isEmpty()
+						&& Sets.difference(itemi.getValue(),itemj.getValue()).isEmpty())
+				{
+					preds.put(Sets.difference(itemi.getKey(),itemj.getKey())
+							,Sets.difference(itemi.getValue(),itemj.getValue()));
+				}
+				if(!Sets.difference(itemj.getKey(),itemi.getKey()).isEmpty()
+						&& Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty())
+				{
+					preds.put(Sets.difference(itemj.getKey(),itemi.getKey())
+							,Sets.difference(itemj.getValue(),itemi.getValue()));
+				}
+			}
+		}
+		FileWriter outFile,outPred;
+		if(outPath==null)
+		{
+			System.out.print("====Predictions====\nAntecedent,Consequent\n");
+			for(Entry<Set<Long>, Set<Long>> i:map)
+			{
+				String stemp="\"[";
+				for(long j:i.getKey())
+					stemp+=this.data.getCName((int)j-1)+",";
+				stemp+="]\",\"[";
+				
+				for(long j:i.getValue())
+					stemp+=this.data.getRName((int)j-1)+",";
+				stemp+="]\"";
+				System.out.println(stemp);
+			}
+		}
+		else
+		{
+			outPred = new FileWriter(outPath+"/"+fname+"_prediction_from_bicluster.csv");
+			outPred.append("Antecedent,Consequent\n");
+			for(Entry<Set<Long>, Set<Long>> i:map)
+			{
+				String stemp="\"[";
+				for(long j:i.getKey())
+					stemp+=this.data.getCName((int)j-1)+",";
+				stemp=stemp.substring(0,stemp.length()-1);
+				stemp+="]\",\"[";
+				
+				for(long j:i.getValue())
+					stemp+=this.data.getRName((int)j-1)+",";
+				stemp=stemp.substring(0,stemp.length()-1);
+				stemp+="]\"\n";
+				outPred.append(stemp);
+			}
+			outPred.close();
+		}
+	}
+
 }
