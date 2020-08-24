@@ -12,7 +12,7 @@ First <b>download</b> the <b>CellBiClust.jar</b> file.
 
 Execution command --
 ```
-CellBiClust.jar "input file path" "delimiter" "output file path" "output filename" minrows" "mincols" "rule_gen" "rule threshold"
+CellBiClust.jar "input file path" "delimiter" "output file path" "output filename" minrows" "mincols" "rule_gen" "rule threshold" "similarity"
 ```
 
 ##### Command Line Arguments 
@@ -24,6 +24,7 @@ CellBiClust.jar "input file path" "delimiter" "output file path" "output filenam
 <b>"mincols"</b> : the minimum number of columns in the bicluster.<br>
 <b>"rule_gen"</b> : the value should be "true" or "false" if the user wants to generate rules or not<br>
 <b>"rule threshold"</b> : the minimum confidence for each rule to be generated<br>
+<b>"similarity"</b> : the minimum similarity between two clusters<br>
  <br>
 
 
@@ -44,7 +45,7 @@ The file containing predictions will be named as "sample_output_prediction.txt".
 ## EXAMPLE
 To execute it download the <b>CellBiClust.jar</b> file , <b>sample.csv</b> and type the following command --<br>
 ```  
-CellBiClust.jar "sample.csv" "," "src" "sample_out" 2 2 "true" 0.7
+CellBiClust.jar "sample.csv" "," "src" "sample_out" 2 2 "true" 0.7 0.75
 ```
 The sample outputs are available in src folder<br>
 
