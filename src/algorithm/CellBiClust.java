@@ -339,7 +339,7 @@ public class CellBiClust
 			try {
 				
 				new Predict(this.inputData,output,ruleth).getRules(outPath,fname);
-				new Predict(this.inputData,output,ruleth).getRulesFromBicluster(outPath,fname);
+				new Predict(this.inputData,output,ruleth).getRulesFromBicluster(outPath,fname,0.75);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

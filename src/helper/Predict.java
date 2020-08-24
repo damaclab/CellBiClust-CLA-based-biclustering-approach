@@ -14,6 +14,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.google.common.collect.Sets;
+import com.google.common.collect.Sets.SetView;
 /** 
  * 
  * This is used to predict rules from the given dataset and set of clusters given by CellBiClust
@@ -249,7 +250,7 @@ public class Predict
 	 * @param fname the file name
 	 * @throws IOException 
 	 * */
-	public void getRulesFromBicluster(String outPath,String fname) throws IOException
+	public void getRulesFromBicluster(String outPath,String fname,double similarity) throws IOException
 	{
 		List<Entry<Set<Long>, Set<Long>>> map=this.map.stream().collect(Collectors.toList());
 		Map<Set<Long>,Set<Long>> preds=new HashMap<Set<Long>,Set<Long>>();
@@ -259,14 +260,19 @@ public class Predict
 			for(int j=i+1;j<map.size();j++)
 			{
 				Entry<Set<Long>, Set<Long>> itemj=map.get(j);
-				if(!Sets.difference(itemi.getKey(),itemj.getKey()).isEmpty()
+				SetView<Long> diff1=Sets.difference(itemi.getKey(),itemj.getKey());
+				if(diff1.size()/((double)itemi.getKey().size())>=similarity &&
+						!diff1.isEmpty()
 						&& !Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty())
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
 					preds.put(Sets.difference(itemi.getKey(),itemj.getKey())
 							,Sets.difference(itemj.getValue(),itemi.getValue()));
-				}
-				if(!Sets.difference(itemj.getKey(),itemi.getKey()).isEmpty()
+				} 
+				
+				SetView<Long> diff2=Sets.difference(itemj.getKey(),itemi.getKey());
+				if(diff2.size()/((double)itemj.getKey().size())>=similarity &&
+						!diff2.isEmpty()
 						&& !Sets.difference(itemi.getValue(),itemj.getValue()).isEmpty())
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
@@ -275,7 +281,7 @@ public class Predict
 				}
 			}
 		}
-		FileWriter outFile,outPred;
+		FileWriter outPred;
 		if(outPath==null)
 		{
 			System.out.print("====Predictions====\nItems,Predicted Transactions\n");
