@@ -250,7 +250,7 @@ public class CellBiClust
 	 * @param ruleth the minimum condfidence for the rule
 	 * @return a set containing all the biclusters
 	 * */
-	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String fname,String rule,double ruleth) throws InterruptedException
+	public Set<Entry<Set<Long>, Set<Long>>> runAlgorithm(String outPath,String fname,String rule,double ruleth,double similarity) throws InterruptedException
 	{
 		long start=System.currentTimeMillis();
 		find_freq_item();
@@ -339,7 +339,7 @@ public class CellBiClust
 			try {
 				
 				new Predict(this.inputData,output,ruleth).getRules(outPath,fname);
-				new Predict(this.inputData,output,ruleth).getRulesFromBicluster(outPath,fname,0.75);
+				new Predict(this.inputData,output,ruleth).getRulesFromBicluster(outPath,fname,similarity);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
