@@ -318,9 +318,10 @@ public class CellBiClust
 		{
 			
 			try {
-				FileWriter outFile = new FileWriter(outPath+"/"+fname+"_biclusters.txt");
+				FileWriter outFile = new FileWriter(outPath+"/"+fname+"_biclusters.csv");
 				outFile.write(details);
 				outFile.write(getBiClustersAsString());
+				
 				outFile.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -357,24 +358,29 @@ public class CellBiClust
 		String sout="\n";
 		for(Entry<Set<Long>, Set<Long>> i:this.outputTemp)
 		{
-			sout+="Bicluster "+k+++
-					"\nNumber of Items : "+i.getKey().size()+
-					"\nNumber of Transactions : "+i.getValue().size()+"\n";
-			String s1="Item_names :",s2="Item_indexes :";
+//			sout+="Bicluster "+k+++
+//					"\nNumber of Items : "+i.getKey().size()+
+//					"\nNumber of Transactions : "+i.getValue().size()+"\n";
+//			String s1="Item_names :",s2="Item_indexes :";
+			String s1="\"";
 			for(Long j:i.getKey())
 			{
-				s1+="\t"+this.inputData.getCName((int)(long)j-1);
-				s2+="\t"+(j-1);
+//				s1+="\t"+this.inputData.getCName((int)(long)j-1);
+				s1+=this.inputData.getCName((int)(long)j-1)+",";
+//				s2+="\t"+(j-1);
 			}
-			sout+=s1+"\n"+s2+"\n";
-			s1="Transaction names : ";
-			s2="Transaction indexes : ";
+			sout+=s1.substring(0,s1.length()-1)+"\",\"";//+"\n"+s2+"\n";
+//			s1="Transaction names : ";
+//			s2="Transaction indexes : ";
+			s1="";
 			for(Long j:i.getValue())
 			{
-				s1+="\t"+this.inputData.getRName((int)(long)j-1);
-				s2+="\t"+(j-1);
+//				s1+="\t"+this.inputData.getRName((int)(long)j-1);
+				s1+=this.inputData.getRName((int)(long)j-1)+",";
+//				s2+="\t"+(j-1);
 			}
-			sout+=s1+"\n"+s2+"\n\n";
+//			sout+=s1+"\n"+s2+"\n\n";
+			sout+=s1.substring(0,s1.length()-1)+"\"\n";
 		}
 		return sout;
 	}

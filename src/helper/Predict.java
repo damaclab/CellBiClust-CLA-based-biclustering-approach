@@ -260,9 +260,10 @@ public class Predict
 			for(int j=i+1;j<map.size();j++)
 			{
 				Entry<Set<Long>, Set<Long>> itemj=map.get(j);
-				SetView<Long> diff1=Sets.difference(itemi.getKey(),itemj.getKey());
-				if(diff1.size()/((double)itemi.getKey().size())>=similarity &&
-						!diff1.isEmpty()
+				
+				SetView<Long> intersect=Sets.intersection(itemj.getKey(),itemi.getKey());
+				if(intersect.size()/((double)itemi.getKey().size())>=similarity &&
+						!Sets.difference(itemi.getKey(),itemj.getKey()).isEmpty()
 						&& !Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty())
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
@@ -270,9 +271,9 @@ public class Predict
 							,Sets.difference(itemj.getValue(),itemi.getValue()));
 				} 
 				
-				SetView<Long> diff2=Sets.difference(itemj.getKey(),itemi.getKey());
-				if(diff2.size()/((double)itemj.getKey().size())>=similarity &&
-						!diff2.isEmpty()
+				
+				if(intersect.size()/((double)itemj.getKey().size())>=similarity &&
+						!Sets.difference(itemj.getKey(),itemi.getKey()).isEmpty()
 						&& !Sets.difference(itemi.getValue(),itemj.getValue()).isEmpty())
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());

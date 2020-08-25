@@ -5,9 +5,9 @@ public class MainTest
 {
 	public static void main(String[] args) throws Exception
 	{
-//	   	ob.runAlgorithm("src","sample_output","true",0.7);
-		CellBiClust ob=new CellBiClust("D:\\work\\BiCluster\\Test_Cases\\Fish_Bio.csv",",",2,2);
-		ob.runAlgorithm("D:/work/BiCluster/","Fish","true",0.7,0.75);
+//	   	ob.runAlgorithm("src","sample_output","true",0.7,0.75);
+		CellBiClust ob=new CellBiClust("D:\\work\\BiCluster\\sample.csv",",",2,2);
+		ob.runAlgorithm("D:/work/BiCluster/","sample_out","true",0.7,0.5);
 	}
 
 }	
