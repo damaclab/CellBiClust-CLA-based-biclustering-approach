@@ -244,6 +244,21 @@ public class Predict
 		}
 	}
 	
+	public String entryToString(Entry<Set<Long>, Set<Long>> temp)
+	{
+		String stemp="\"[";
+		for(long j:temp.getKey())
+			stemp+=this.data.getCName((int)j-1)+",";
+		stemp=stemp.substring(0,stemp.length()-1);
+		stemp+="]\",\"[";
+		
+		for(long j:temp.getValue())
+			stemp+=this.data.getRName((int)j-1)+",";
+		stemp=stemp.substring(0,stemp.length()-1);
+		stemp+="]\"";
+		return stemp;
+	}
+	
 	/**
 	 * Methods to generate the rules from the given output set.
 	 * @param outPath the path for the output file
@@ -254,6 +269,9 @@ public class Predict
 	{
 		List<Entry<Set<Long>, Set<Long>>> map=this.map.stream().collect(Collectors.toList());
 		Map<Set<Long>,Set<Long>> preds=new HashMap<Set<Long>,Set<Long>>();
+		
+		Set<String> output=new HashSet<String>();
+		
 		for(int i=0;i<map.size();i++)
 		{
 			Entry<Set<Long>, Set<Long>> itemi=map.get(i);
@@ -267,6 +285,17 @@ public class Predict
 						&& !Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty())
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
+					String stemp=this.entryToString(itemi)+","
+							+this.entryToString(itemj)+",\"[";
+					
+					for(long jj:Sets.difference(itemi.getKey(),itemj.getKey()))
+						stemp+=this.data.getCName((int)jj-1)+",";
+					stemp+="]\",\"[";
+					for(long jj:Sets.difference(itemj.getValue(),itemi.getValue()))
+						stemp+=this.data.getRName((int)jj-1)+",";
+					stemp+="]\"";
+					output.add(stemp);
+					
 					preds.put(Sets.difference(itemi.getKey(),itemj.getKey())
 							,Sets.difference(itemj.getValue(),itemi.getValue()));
 				} 
@@ -277,6 +306,18 @@ public class Predict
 						&& !Sets.difference(itemi.getValue(),itemj.getValue()).isEmpty())
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
+					String stemp=this.entryToString(itemi)+","
+							+this.entryToString(itemj)+",\"[";
+					
+					for(long jj:Sets.difference(itemj.getKey(),itemi.getKey()))
+						stemp+=this.data.getCName((int)jj-1)+",";
+					stemp+="]\",\"[";
+					for(long jj:Sets.difference(itemi.getValue(),itemj.getValue()))
+						stemp+=this.data.getRName((int)jj-1)+",";
+					stemp+="]\"";
+					output.add(stemp);
+					
+					
 					preds.put(Sets.difference(itemj.getKey(),itemi.getKey())
 							,Sets.difference(itemi.getValue(),itemj.getValue()));
 				}
@@ -302,21 +343,29 @@ public class Predict
 		else
 		{
 			outPred = new FileWriter(outPath+"/"+fname+"_prediction_from_bicluster.csv");
-			outPred.append("Items,Predicted Transactions\n");
-			for(Entry<Set<Long>, Set<Long>> i:preds.entrySet())
-			{
-				String stemp="\"[";
-				for(long j:i.getKey())
-					stemp+=this.data.getCName((int)j-1)+",";
-				stemp=stemp.substring(0,stemp.length()-1);
-				stemp+="]\",\"[";
-				
-				for(long j:i.getValue())
-					stemp+=this.data.getRName((int)j-1)+",";
-				stemp=stemp.substring(0,stemp.length()-1);
-				stemp+="]\"\n";
-				outPred.append(stemp);
-			}
+			outPred.append("Cluster A,Cluster B,Items,Predicted Transactions\n");
+			output.forEach(i->{
+				try {
+					outPred.append(i+"\n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+//			for(Entry<Set<Long>, Set<Long>> i:preds.entrySet())
+//			{
+//				String stemp="\"[";
+//				for(long j:i.getKey())
+//					stemp+=this.data.getCName((int)j-1)+",";
+//				stemp=stemp.substring(0,stemp.length()-1);
+//				stemp+="]\",\"[";
+//				
+//				for(long j:i.getValue())
+//					stemp+=this.data.getRName((int)j-1)+",";
+//				stemp=stemp.substring(0,stemp.length()-1);
+//				stemp+="]\"\n";
+//				outPred.append(stemp);
+//			}
 			outPred.close();
 		}
 	}
