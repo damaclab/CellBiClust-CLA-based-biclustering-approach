@@ -250,7 +250,7 @@ public class Predict
 		for(long j:temp.getKey())
 			stemp+=this.data.getCName((int)j-1)+",";
 		stemp=stemp.substring(0,stemp.length()-1);
-		stemp+="]\",\"[";
+		stemp+="]=[";
 		
 		for(long j:temp.getValue())
 			stemp+=this.data.getRName((int)j-1)+",";
