@@ -269,6 +269,7 @@ public class Predict
 	{
 		List<Entry<Set<Long>, Set<Long>>> map=this.map.stream().collect(Collectors.toList());
 		Map<Set<Long>,Set<Long>> preds=new HashMap<Set<Long>,Set<Long>>();
+		Map<String,String> predstr=new HashMap<String,String>();
 		
 		Set<String> output=new HashSet<String>();
 		
@@ -286,15 +287,22 @@ public class Predict
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
 					String stemp=this.entryToString(itemi)+","
-							+this.entryToString(itemj)+",\"[";
+							+this.entryToString(itemj)+",";//+",\"[";
+					
+//					for(long jj:Sets.difference(itemi.getKey(),itemj.getKey()))
+//						stemp+=this.data.getCName((int)jj-1)+",";
+//					stemp+="]\",\"[";
+//					for(long jj:Sets.difference(itemj.getValue(),itemi.getValue()))
+//						stemp+=this.data.getRName((int)jj-1)+",";
 					
 					for(long jj:Sets.difference(itemi.getKey(),itemj.getKey()))
-						stemp+=this.data.getCName((int)jj-1)+",";
-					stemp+="]\",\"[";
-					for(long jj:Sets.difference(itemj.getValue(),itemi.getValue()))
-						stemp+=this.data.getRName((int)jj-1)+",";
-					stemp+="]\"";
-					output.add(stemp);
+						for(long jjj:Sets.difference(itemj.getValue(),itemi.getValue()))
+						{
+							predstr.put(this.data.getCName((int)jj-1),this.data.getRName((int)jjj-1));
+							output.add(stemp+this.data.getCName((int)jj-1)+","+this.data.getRName((int)jjj-1));
+						}
+//					stemp+="]\"";
+//					output.add(stemp);
 					
 					preds.put(Sets.difference(itemi.getKey(),itemj.getKey())
 							,Sets.difference(itemj.getValue(),itemi.getValue()));
@@ -307,15 +315,21 @@ public class Predict
 				{
 //					System.out.println(Sets.difference(itemj.getValue(),itemi.getValue()).isEmpty());
 					String stemp=this.entryToString(itemi)+","
-							+this.entryToString(itemj)+",\"[";
+							+this.entryToString(itemj)+",";//+",\"[";
+					
+//					for(long jj:Sets.difference(itemj.getKey(),itemi.getKey()))
+//						stemp+=this.data.getCName((int)jj-1)+",";
+//					stemp+="]\",\"[";
+//					for(long jj:Sets.difference(itemi.getValue(),itemj.getValue()))
+//						stemp+=this.data.getRName((int)jj-1)+",";
 					
 					for(long jj:Sets.difference(itemj.getKey(),itemi.getKey()))
-						stemp+=this.data.getCName((int)jj-1)+",";
-					stemp+="]\",\"[";
-					for(long jj:Sets.difference(itemi.getValue(),itemj.getValue()))
-						stemp+=this.data.getRName((int)jj-1)+",";
-					stemp+="]\"";
-					output.add(stemp);
+						for(long jjj:Sets.difference(itemi.getValue(),itemj.getValue()))
+						{
+							predstr.put(this.data.getCName((int)jj-1),this.data.getRName((int)jjj-1));
+							output.add(stemp+this.data.getCName((int)jj-1)+","+this.data.getRName((int)jjj-1));
+						}
+//					output.add(stemp);
 					
 					
 					preds.put(Sets.difference(itemj.getKey(),itemi.getKey())
@@ -366,6 +380,7 @@ public class Predict
 //				stemp+="]\"\n";
 //				outPred.append(stemp);
 //			}
+			outPred.append("\nTotal number of unique predictions : "+predstr.size());
 			outPred.close();
 		}
 	}
