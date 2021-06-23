@@ -380,7 +380,7 @@ public class Predict
 //				stemp+="]\"\n";
 //				outPred.append(stemp);
 //			}
-			outPred.append("\nTotal number of unique predictions : "+predstr.size());
+//			outPred.append("\nTotal number of unique predictions : "+predstr.size());
 			outPred.close();
 		}
 	}
