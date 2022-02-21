@@ -56,7 +56,7 @@ public class Predict
 		int sup;//The support of the rule
 		public String toString()
 		{
-			return "\""+antecedent+"\","+consequent+","+conf+","+sup+",\""+obj_list+"\"\n";
+			return "\""+antecedent+"\","+consequent+","+sup+","+conf+","+"\""+obj_list+"\"\n";
 		}
 	}
 	
@@ -221,7 +221,7 @@ public class Predict
 		FileWriter outFile,outPred;
 		if(outPath==null)
 		{
-			System.out.print("====Rules====\nAntecedent,Consequent,Confidence,Support,Object List\n");
+			System.out.print("====Rules====\nAntecedent,Consequent,Support,Confidence,Object List\n");
 			for(Rule i:rule)
 				System.out.print(i.toString());
 			System.out.print("====Predictions====\nAntecedent,Consequent,Confidence\n");
@@ -231,12 +231,18 @@ public class Predict
 		else
 		{
 			outFile = new FileWriter(outPath+"/"+fname+"_rule.csv");
-			outFile.append("Antecedent,Consequent,Confidence,Support,Object List\n");
+			outFile.append("==================Summary==================\n");
+			outFile.append("Generated rules from the biclusters : "+rule.size()+"\n");
+			outFile.append("===========================================\n");
+			outFile.append("Antecedent,Consequent,Support,Confidence,Object List\n");
 			for(Rule i:rule)
 				outFile.append(i.toString());
 			outFile.close();
 			
 			outPred = new FileWriter(outPath+"/"+fname+"_prediction.csv");
+			outPred.append("==================Summary==================\n");
+			outPred.append("Predicted rules from the bicusters and the generated rules : "+pred.size()+"\n");	
+			outPred.append("===========================================\n");	
 			outPred.append("Antecedent,Consequent,Confidence\n");
 			for(Prediction i:pred)
 				outPred.append(i.toString());
@@ -357,7 +363,10 @@ public class Predict
 		else
 		{
 			outPred = new FileWriter(outPath+"/"+fname+"_prediction_from_bicluster.csv");
-			outPred.append("Cluster A,Cluster B,Items,Predicted Transactions\n");
+			outPred.append("==================Summary==================\n");
+			outPred.append("Considering two biclusters (Cluster A and Cluster B) at a time, prediction from bicluster denotes finding possible pair for occurrences: "+output.size()+"\n");
+			outPred.append(" Like, row : column / object : attribute /  item : transaction\n");
+			outPred.append("Cluster A,Cluster B,Row/Object/Item,Predicted Column/Attribute/Transaction\n");
 			output.forEach(i->{
 				try {
 					outPred.append(i+"\n");

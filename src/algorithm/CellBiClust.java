@@ -332,7 +332,8 @@ public class CellBiClust
 		
 		System.out.println("==================Summary==================");
 		System.out.println("Number of Biclusters Generated : " + output.size());
-		System.out.println("Number of transactions : " + TDB.size());
+		System.out.println("Number of rows/ objects/ transactions : " + TDB.size());
+		System.out.println("Number of columns/ attributes/frequent items : "+FIMap.keySet().size());
 		System.out.println("Max memory : "+ m.getMaxMemory() +" MB");
 		System.out.println("Time taken : "+ (end-start) +" ms");
 		System.out.println("===========================================");

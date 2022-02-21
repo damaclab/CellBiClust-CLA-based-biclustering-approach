@@ -1,0 +1,43 @@
+==================Summary==================
+Considering two biclusters (Cluster A and Cluster B) at a time, prediction from bicluster denotes finding possible pair for occurrences: 39
+ Like, row : column / object : attribute /  item : transaction
+Cluster A,Cluster B,Row/Object/Item,Predicted Column/Attribute/Transaction
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C6,C7,C10]=[R2,R8]",C9,R2
+"[C1,C2,C5,C7]=[R2,R9]","[C1,C2,C7,C10]=[R1,R2]",C10,R9
+"[C1,C2,C3,C7]=[R1,R9]","[C1,C2,C7,C10]=[R1,R2]",C3,R2
+"[C2,C5,C6,C10]=[R2,R3]","[C2,C6,C7,C10]=[R2,R8]",C7,R3
+"[C2,C7,C10]=[R1,R2,R8]","[C2,C3,C7,C10]=[R1,R8]",C3,R2
+"[C1,C2,C3,C7]=[R1,R9]","[C2,C3,C7,C10]=[R1,R8]",C1,R8
+"[C3,C4,C7,C9]=[R8,R10]","[C2,C3,C4,C7,C8]=[R8,R9]",C9,R9
+"[C1,C2,C3,C7]=[R1,R9]","[C2,C3,C7,C10]=[R1,R8]",C10,R9
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C6,C7,C10]=[R2,R8]",C7,R3
+"[C2,C6,C7,C10]=[R2,R8]","[C1,C2,C7,C10]=[R1,R2]",C6,R1
+"[C1,C2,C5,C7]=[R2,R9]","[C1,C2,C7]=[R1,R2,R9]",C5,R1
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C3,C6,C9]=[R4,R8]",C10,R4
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C5,C6,C10]=[R2,R3]",C9,R2
+"[C2,C6,C7,C10]=[R2,R8]","[C1,C2,C7,C10]=[R1,R2]",C1,R8
+"[C1,C2,C7,C10]=[R1,R2]","[C2,C3,C7,C10]=[R1,R8]",C1,R8
+"[C1,C2,C5,C7]=[R2,R9]","[C1,C2,C7,C10]=[R1,R2]",C5,R1
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C5,C6,C10]=[R2,R3]",C5,R8
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C3,C6,C9]=[R4,R8]",C3,R3
+"[C1,C2,C3,C7]=[R1,R9]","[C2,C3,C4,C7,C8]=[R8,R9]",C1,R8
+"[C1,C2,C7,C10]=[R1,R2]","[C2,C3,C7,C10]=[R1,R8]",C3,R2
+"[C1,C2,C7]=[R1,R2,R9]","[C1,C2,C7,C10]=[R1,R2]",C10,R9
+"[C2,C3,C7]=[R1,R8,R9]","[C2,C3,C7,C10]=[R1,R8]",C10,R9
+"[C2,C5,C6,C10]=[R2,R3]","[C2,C6,C10]=[R2,R3,R8]",C5,R8
+"[C1,C2,C3,C7]=[R1,R9]","[C2,C3,C7]=[R1,R8,R9]",C1,R8
+"[C2,C6,C7,C10]=[R2,R8]","[C2,C7,C10]=[R1,R2,R8]",C6,R1
+"[C2,C3,C4,C7,C8]=[R8,R9]","[C2,C3,C7,C10]=[R1,R8]",C10,R9
+"[C2,C6,C7,C10]=[R2,R8]","[C2,C3,C7,C10]=[R1,R8]",C3,R2
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C6,C9]=[R3,R4,R8]",C10,R4
+"[C1,C2,C3,C7]=[R1,R9]","[C1,C2,C7,C10]=[R1,R2]",C10,R9
+"[C2,C6,C9,C10]=[R3,R8]","[C2,C6,C10]=[R2,R3,R8]",C9,R2
+"[C1,C2,C7]=[R1,R2,R9]","[C1,C2,C3,C7]=[R1,R9]",C3,R2
+"[C1,C2,C7,C10]=[R1,R2]","[C2,C7,C10]=[R1,R2,R8]",C1,R8
+"[C3,C4,C7,C9]=[R8,R10]","[C3,C4,C7]=[R8,R9,R10]",C9,R9
+"[C2,C6,C7,C10]=[R2,R8]","[C2,C6,C10]=[R2,R3,R8]",C7,R3
+"[C2,C5,C6,C10]=[R2,R3]","[C2,C6,C7,C10]=[R2,R8]",C5,R8
+"[C2,C6,C7,C10]=[R2,R8]","[C2,C3,C7,C10]=[R1,R8]",C6,R1
+"[C2,C3,C6,C9]=[R4,R8]","[C2,C6,C9]=[R3,R4,R8]",C3,R3
+"[C1,C2,C5,C7]=[R2,R9]","[C1,C2,C3,C7]=[R1,R9]",C5,R1
+"[C1,C2,C5,C7]=[R2,R9]","[C1,C2,C3,C7]=[R1,R9]",C3,R2
