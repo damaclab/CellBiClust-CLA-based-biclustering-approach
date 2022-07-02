@@ -10,10 +10,22 @@ Implementation of CellBiClust Algorithm
 
 First <b>download</b> the <b>CellBiClust.jar</b> file.
 
-Execution command --
+For <b>Java</b> Users Execution command --
 ```
 CellBiClust.jar "input file path" "delimiter" "output file path" "output filename" minrows" "mincols" "rule_gen" "rule threshold" "similarity"
 ```
+
+For <b>R</b> Users Execution command --
+1. Make sure you have installed R and RStudio 
+2. Open RStudio and inside a shell do the next steps
+3. Install <b>rJava</b> package using : ```install.packages("rJava")``` 
+4. Import <b>rJava</b> package using :```library(rjava)```
+5. Initialize the JVM : ```.jinit()```
+6. Add the jar file : ```.jaddClassPath('path_to_CellBiClust.jar')```
+7. Create an object of the main class : ```ob=.jnew('MainCellBiClust')```
+8. Call the main function using : ```.jcall(ob,'V','main',an_array_of_arguments)```
+The order of arguments in an_array_of_arguments will the same as mentioned in the next section. 
+Example : ```.jcall(ob,'V','main', c("D:/Eclipse_Workspace/CellBiClust/src/sample.csv" ,",", "src" ,"sample_out", 2, 2, "true", 0.7, 0.75) )```
 
 ##### Command Line Arguments 
 <b>"input file path"</b>            : the path to an input file containing a transaction database.<br>
