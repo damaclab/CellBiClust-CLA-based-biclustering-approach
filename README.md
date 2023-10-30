@@ -1,5 +1,8 @@
 # CellBiClust
-Implementation of CellBiClust Algorithm
+CellBiClust: A Novel ICLA based Distributed FP-Tree Approach for Inclusion Maximal Biclusters
+
+## Description
+CellBi-Clust utilises the tree data structure and exploits the concept of irregular cellular learning automata to incorporate parallelism in finding biclusters or frequent closed patterns from a binary dataset.
 
 ### Prerequisites
 
