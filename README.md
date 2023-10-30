@@ -65,5 +65,19 @@ CellBiClust.jar "sample.csv" "," "src" "sample_out" 2 2 "true" 0.7 0.75
 The sample outputs are available in src folder<br>
 
 <b>Note</b> : You can use src/dataGenerator.m to generate a binary matrix of dimenation m * n with k 1's . However it won't assign any column or row names. In order to execute the generated file using CellBiClust.jar , one has to add those row names and column names externally. 
+
+## Comparison Algorithms
+We measure the behavior of CellBiClust with reference to Bimax algorithm as it is a remarkably accepted reference for biclustering algorithm in research community. 
+
+## Datasets
+Several  datasets have been used for the comparison of the algorithms with varying dimentions and dataset densities.   
+
+- HIV-Human PPI dataset 
+- Tranposed HIV-Human PPI dataset
+- Sundarban Mangrove dataset
+- Grocery Market dataset
+- Estuarine Fish Presence dataset
+- Transposed Estuarine Fish Presence dataset
+
 ## ORIGINAL PAPER
 * **Author** - *Initial work* - [Link](link)
